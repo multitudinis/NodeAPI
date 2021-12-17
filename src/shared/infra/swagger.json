@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "This is an API written using TypeScript and NodeJS",
+        "version": "1.0.0",
+        "contact": {
+            "email": "lucaspessoa.ds@outlook.com"
+        }
+    },
+    "paths": {
+        "/tasks": {
+            "post": {
+                "tags": [
+                    "Create"
+                ],
+                "summary": "Create a new task",
+                "description": "Create a new task",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "conteudo": {
+                                        "type": "string"
+                                    },
+                                    "nomeAutor": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "nome": "Jardinagem",
+                                    "conteudo": "Regar as plantas todos os dia ao por do sol",
+                                    "nomeAutor": "Fauno"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "": {
+                        "description": "Error: Server returned nothing (no headers, no data)"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Read"
+                ],
+                "summary": "List all tasks",
+                "description": "List all tasks",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/tasks/:id": {
+            "put": {
+                "tags": [
+                    "Update"
+                ],
+                "summary": "Update a task",
+                "description": "Update a task, feel free to provide only one property change. The Id must be delivered through URL params.",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "format": "int32"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "conteudo": {
+                                        "type": "string"
+                                    },
+                                    "nomeAutor": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "nome": "Jardinagem pedagógica",
+                                    "conteudo": "Regar as plantas todos os dia ao por do sol",
+                                    "nomeAutor": "Curupira"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "404": {
+                        "description": "The provided ID does not exists!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delete"
+                ],
+                "summary": "Delete a task",
+                "description": "Delete a task passing the id through URL params",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "The provided ID does not exists!"
+                    }
+                }
+            }
+        }
+    }
+}

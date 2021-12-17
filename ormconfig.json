@@ -1,0 +1,14 @@
+{
+    "type": "postgres",
+    "port": 5432,
+    "host": "localhost",
+    "username": "lucas",
+    "password": "init",
+    "database": "desafio",
+    "synchronize": true,
+    "entities" : ["./src/tasks/infra/entities/*.ts"],
+    "migrations": ["./src/shared/infra/database/migrations/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/shared/infra/database/migrations"
+    }
+}

@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  database_desafio:
+    image: postgres
+    container_name: database_desafio
+    restart: always
+    environment:
+      - POSTGRES_USER=lucas
+      - POSTGRES_PASSWORD=init
+      - POSTGRES_DB=desafio
+    volumes:
+      - pgdata:/data/postgres
+    network_mode: host
+  app:
+    build: .
+    container_name: tarefas
+    volumes:
+      - .:/usr/app
+    network_mode: host
+
+volumes:
+  pgdata:
+    driver: local

@@ -1,0 +1,3 @@
+interface IFindByIdDTO {
+    id: string;
+}
